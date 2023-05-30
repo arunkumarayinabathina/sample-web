@@ -24,7 +24,7 @@
         }
 
         .container{
-            height: 100vh;
+            height: 98vh;
             width: 100%;
             background:#000000;
             display: flex;
@@ -45,10 +45,29 @@
             box-shadow: 10px 10px 10px -1px rgba(24, 26, 27, 0.16),
                        -10px -10px 10px -1px rgba(255,255,255,0.70);
         }
-    </style> 
+        
+        /* Caution text style */
+        .caution-text {
+            color: white;
+            text-align: center;
+            margin-top: -0px;
+            background:#000000;
+        }
+  </style> 
+  <script>
+    function confirmRedirect() {
+      var confirmed = confirm("🤍 WELCOME 🤍");
+      if (confirmed) {
+        window.location.href = "menu.html";
+      }
+    }
+  </script> 
  </head> 
  <body> 
-  <div class="container"> <button type="button"><a href="menu.html">VIEW BLOG</a></button> 
-  </div>  
+  <div class="container"> <button type="button" onclick="confirmRedirect()"><a href="#">ENTER</a></button> 
+  </div> 
+  <div class="caution-text"> 
+   <p>Caution: The website developer is a meme lover.</p> 
+  </div> 
  
 </body></html>
