@@ -1,0 +1,142 @@
+<!doctype html>
+<html> 
+ <head> 
+  <title>Menu Icon Example</title> 
+  <style>
+    /* CSS for the menu icon */
+    .menu-icon {
+      display: block;
+      width: 30px;
+      height: 20px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 9999;
+      background-color: #000;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-icon.open {
+      background-color: #fff;
+    }
+
+    .menu-icon .line {
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-icon.open .line {
+      background-color: #000;
+    }
+
+    /* CSS for the menu */
+    .menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9998;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .menu ul li {
+      margin: 10px 0;
+    }
+
+    .menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    /* CSS for the welcome text */
+    .welcome-text {
+      display: block;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 24px;
+      color: #000;
+      z-index: 9997;
+    }
+
+    /* CSS for the circular photo */
+    .circular-photo {
+      display: block;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-image: url(demo.png);
+      background-size: cover;
+      background-position: center;
+      margin: 20px auto;
+      transition: opacity 0.3s ease;
+    }
+    a {
+            text-decoration: none;
+        }
+    .circular-photo.hide {
+      opacity: 0;
+    }
+  </style> 
+ </head> 
+ <body> 
+  <div class="menu-icon" onclick="toggleMenu()"> 
+   <div class="line"></div> 
+   <div class="line"></div> 
+   <div class="line"></div> 
+  </div> 
+  <div class="menu" id="menu"> 
+   <ul> 
+    <li><a href="edu.html">EDUCATION</a></li> 
+    <li><a href="skil.html">SKILLS</a></li> 
+    <li><a href="ach.html">ACHIEVEMENTS</a></li> 
+    <li><a href="int.html">INTERESTS</a></li> 
+    <li><a href="cont.html">CONTACT INFO</a></li> 
+   </ul> 
+  </div> 
+  <div class="circular-photo" id="circularPhoto"></div> 
+  <div class="welcome-text" id="welcomeText">
+    WELCOME TO ARUN BLOG 
+  </div> 
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("menu");
+      var welcomeText = document.getElementById("welcomeText");
+      var menuIcon = document.querySelector(".menu-icon");
+      var circularPhoto = document.getElementById("circularPhoto");
+
+      if (menu.style.display === "none") {
+        menu.style.display = "block";
+        welcomeText.style.display = "none";
+        menuIcon.classList.add("open");
+        circularPhoto.classList.add("hide");
+      } else {
+        menu.style.display = "none";
+        welcomeText.style.display = "block";
+        menuIcon.classList.remove("open");
+        circularPhoto.classList.remove("hide");
+      }
+    }
+  </script>  
+ 
+</body></html>
