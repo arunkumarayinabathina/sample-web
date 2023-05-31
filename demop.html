@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    
+    .name {
+      font-size: 72px;
+      margin-bottom: 40px;
+    }
+    
+    .photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 40px;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      font-size: 16px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 150px;
+      height: 60px;
+      margin: 0 20px;
+      background-color: black;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .text-box {
+      display: none;
+      width: 600px;
+      max-width: calc(100% - 40px);
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 18px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    
+    .close-button {
+      background-color: #ccc;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .circle-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .circle-button {
+      width: 60px;
+      height: 60px;
+      margin: 0 10px;
+      border-radius: 50%;
+      background-color: black;
+      color: #fff;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .circle-button.instagram {
+      background-color: #E4405F;
+    }
+    
+    .circle-button.telegram {
+      background-color: #0088cc;
+    }
+    
+    .circle-button.github {
+      background-color: #333;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var textBox = document.getElementById("text-box");
+      var buttons = document.getElementsByClassName("button");
+      var closeButton = document.getElementById("close-button");
+  
+      function toggleTextBox(textToShow) {
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].style.display = "none";
+        }
+        textBox.style.display = "block";
+        document.getElementById(textToShow).style.display = "block";
+      }
+  
+      closeButton.addEventListener("click", function() {
+        textBox.style.display = "none";
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].style.display = "block";
+        }
+      });
+  
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+          var buttonId = e.target.getAttribute("id");
+          var textToShow = buttonId + "-text";
+          toggleTextBox(textToShow);
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="name">ARUN KUMAR</h1>
+    <img class="photo" src="demo.png" alt="Profile Photo">
+    <div class="button-container">
+      <button class="button" id="personal-info">PERSONAL INFO</button>
+      <button class="button" id="education">EDUCATION</button>
+    </div>
+    <div class="text-box" id="text-box">
+      <div>
+        <span id="personal-info-text">Personal Data</span>
+        <span id="education-text" style="display:none;">Education Details</span>
+      </div>
+      <button class="close-button" id="close-button">Close</button>
+    </div>
+    <div class="button-container">
+      <button class="button" id="achievements">ACHIEVEMENTS</button>
+      <button class="button" id="skills">SKILLS</button>
+    </div>
+    <div class="circle-container">
+      <a href="https://t.me/your-telegram-link" target="_blank">
+        <button class="circle-button telegram">
+          <i class="fab fa-telegram"></i>
+        </button>
+      </a>
+      <a href="https://www.instagram.com/your-instagram-link" target="_blank">
+        <button class="circle-button instagram">
+          <i class="fab fa-instagram"></i>
+        </button>
+      </a>
+      <a href="https://www.github.com/your-github-link" target="_blank">
+        <button class="circle-button github">
+          <i class="fab fa-github"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
