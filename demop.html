@@ -1,174 +1,361 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!doctype html>
+<html> 
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
   <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      colour:#808080;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 130vh;
+    color: #080800;
+  }
+  h2 {
+      color: brown; /* Replace "blue" with the desired color */
     }
-    
-    .name {
-      font-size: 72px;
-      margin-bottom: 40px;
+  .name {
+    font-size: 50px;
+    margin-bottom: 40px;
+    color: rgb(12, 11, 11);
+  }
+
+  .photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 40px;
+    animation: neon-border-photo 1.5s infinite alternate;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .button-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .button {
+    width: 200px;
+    padding: 15px 25px;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    margin: 0 10px;
+  }
+
+  .button.personal-info {
+    background-color: #007bff; /* Blue */
+    animation:neon-border-personal-info 1.5s infinite alternate;
+  }
+
+  .button.education {
+    background-color: #28a745; /* Green */
+    animation: neon-border-education 1.5s infinite alternate;
+  }
+
+  .button.achievements {
+    background-color: #ffc107; /* Yellow */
+    animation: neon-border-achievements 1.5s infinite alternate;
+  }
+
+  .button.skills {
+    background-color: #dc3545; /* Red */
+    animation: neon-border-skills 1.5s infinite alternate;
+  }
+
+  .button.hobbies {
+    background-color: #a251ee; /* Gray */
+    animation: neon-border-hobbies 1.5s infinite alternate;
+  }
+
+  .button.projects {
+    background-color: #6c757d; /* Teal */
+    animation: neon-border-projects 1.5s infinite alternate;
+  }
+
+  .button.interests {
+    background-color: #67eca3; /* Purple */
+    animation: neon-border-interests 1.5s infinite alternate;
+  }
+
+  .button.languages {
+    background-color: #fd7e14; /* Orange */
+    animation: neon-border-languages 1.5s infinite alternate;
+  }
+
+  .text-box {
+    display: none;
+    width: 400px;
+    max-width: calc(100% - 40px);
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .close-button {
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+
+  .circle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .circle-button {
+    width: 60px;
+    height: 60px;
+    margin: 0 10px;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+  }
+.circle-button.gmail {
+      background-color: #D44638; /* Gmail color */
     }
-    
-    .photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      margin-bottom: 40px;
-    }
-    
-    .button-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-    
-    .button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      font-size: 16px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      width: 150px;
-      height: 60px;
-      margin: 0 20px;
-      background-color: black;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    
-    .text-box {
-      display: none;
-      width: 600px;
-      max-width: calc(100% - 40px);
-      margin-top: 20px;
-      padding: 20px;
-      font-size: 18px;
-      border: 2px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    
-    .close-button {
-      background-color: #ccc;
-      color: #000;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    
-    .circle-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    
-    .circle-button {
-      width: 60px;
-      height: 60px;
-      margin: 0 10px;
-      border-radius: 50%;
-      background-color: black;
-      color: #fff;
-      font-size: 24px;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .circle-button.instagram {
-      background-color: #E4405F;
-    }
-    
-    .circle-button.telegram {
-      background-color: #0088cc;
-    }
-    
-    .circle-button.github {
-      background-color: #333;
-    }
-  </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var textBox = document.getElementById("text-box");
-      var buttons = document.getElementsByClassName("button");
-      var closeButton = document.getElementById("close-button");
-  
-      function toggleTextBox(textToShow) {
-        for (var i = 0; i < buttons.length; i++) {
-          buttons[i].style.display = "none";
-        }
-        textBox.style.display = "block";
-        document.getElementById(textToShow).style.display = "block";
+  .circle-button.instagram {
+    background-color: #E4405F;
+  }
+
+  .circle-button.telegram {
+    background-color: #0088cc;
+  }
+
+  .circle-button.github {
+    background-color: #333;
+  }
+
+  .circle-button.linkedin {
+    background-color: #0077B5;
+  }
+
+  /*.circle-button.facebook {
+    background-color: #3b5998;
+  }*/
+  @keyframes neon-border-photo{
+      0% {
+        box-shadow: 0px 0px 10px rgb(12, 11, 11);
       }
-  
-      closeButton.addEventListener("click", function() {
-        textBox.style.display = "none";
-        for (var i = 0; i < buttons.length; i++) {
-          buttons[i].style.display = "block";
+      100% {
+        box-shadow: 0px 0px 10px rgb(12, 11, 11), 0px 0px 20px rgb(12, 11, 11), 0px 0px 30px rgb(12, 11, 11);
+      }
+    }
+  @keyframes neon-border-education {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #28a745;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #28a745, 0 0 40px#28a745, 0 0 60px #28a745;
+      }
+    }
+    @keyframes neon-border-personal-info {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #007bff;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #007bff, 0 0 40px#007bff, 0 0 60px #007bff;
+      }
+    }
+    @keyframes neon-border-skills {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #dc3545;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #dc3545, 0 0 40px#dc3545, 0 0 60px #dc3545;
+      }
+    }
+    @keyframes neon-border-interests {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #67eca3;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #67eca3, 0 0 40px#67eca3, 0 0 60px #67eca3;
+      }
+    }
+    @keyframes neon-border-achievements {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #ffc107;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #ffc107, 0 0 40px#ffc107, 0 0 60px #ffc107;
+      }
+    }
+    @keyframes neon-border-languages {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #fd7e14;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #fd7e14, 0 0 40px#fd7e14, 0 0 60px #fd7e14;
+      }
+    }
+    @keyframes neon-border-hobbies {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #a251ee;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #a251ee, 0 0 40px#a251ee, 0 0 60px #a251ee;
+      }
+    }
+    @keyframes neon-border-projects {
+      0% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #6c757d;
+      }
+      100% {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3), 0 0 20px #6c757d, 0 0 40px#6c757d, 0 0 60px #6c757d;
+      }
+    }
+  @media only screen and (max-width: 600px) {
+    .name {
+      font-size: 48px;
+    }
+    .photo {
+      width: 150px;
+      height: 150px;
+    }
+    .button {
+      width: 200px;
+      font-size: 16px;
+      margin: 0 5px;
+    }
+    .text-box {
+      width: 300px;
+      font-size: 16px;
+    }
+    .circle-button {
+      width: 40px;
+      height: 40px;
+      margin: 0 5px;
+      font-size: 18px;
+    }
+  }
+</style> 
+ </head> 
+ <body> 
+  <div class="container"> 
+   <h1 class="name">ARUN</h1> 
+   <img class="photo" src="demo.png" alt="Profile Photo"> 
+   <div class="button-row"> <button class="button personal-info" id="personal-info">PERSONAL INFO</button> <button class="button education" id="education">EDUCATION</button> 
+   </div> 
+   <div class="button-row"> <button class="button achievements" id="achievements">ACHIEVEMENTS</button> <button class="button skills" id="skills">SKILLS</button> 
+   </div> 
+   <div class="button-row"> <button class="button hobbies" id="hobbies">HOBBIES</button> <button class="button projects" id="projects">PROJECTS</button> 
+   </div> 
+   <div class="button-row"> <button class="button interests" id="interests">INTERESTS</button> <button class="button languages" id="languages">LANGUAGES</button> 
+   </div> 
+   <div class="text-box" id="personal-info-text"> 
+    <h2>Personal Info</h2> 
+    <p>Hello, this is personal info page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="text-box" id="education-text"> 
+    <h2>Education</h2> 
+    <p>Hello, this is education page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="text-box" id="achievements-text"> 
+    <h2>Achievements</h2> 
+    <p>Hello, this is achievements page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="text-box" id="skills-text"> 
+    <h2>Skills</h2> 
+    <p>Hello, this is skills page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="text-box" id="hobbies-text"> 
+    <h2>Hobbies</h2> 
+    <p>Hello, this is hobbies page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="text-box" id="projects-text"> 
+    <h2>Projects</h2> 
+    <p>Hello, this is projects page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="text-box" id="interests-text"> 
+    <h2>Interests</h2> 
+    <p>Hello, this is interests page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="text-box" id="languages-text"> 
+    <h2>Languages</h2> 
+    <p>Hello, this is languages page</p> <button class="close-button">Close</button> 
+   </div> 
+   <div class="circle-container"> 
+    <button class="circle-button instagram"><i class="fab fa-instagram"></i></button> 
+    <button class="circle-button telegram"><i class="fab fa-telegram"></i></button> 
+    <button class="circle-button github"><i class="fab fa-github"></i></button> 
+    <button class="circle-button linkedin"><i class="fab fa-linkedin"></i></button> 
+    <!--<button class="circle-button facebook"><i class="fab fa-facebook"></i></button>-->
+     <a href="https://www.instagram.com/your_instagram_username" target="_blank">
+       <button class="circle-button gmail"> <i class="far fa-envelope"></i></button>
+      </a> 
+   </div> 
+  </div> 
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var textBoxes = document.getElementsByClassName("text-box");
+    var buttons = document.getElementsByClassName("button");
+    var closeButton = document.getElementsByClassName("close-button");
+    var circleButtons = document.getElementsByClassName("circle-button");
+
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener("click", function() {
+        // Hide all text boxes
+        for (var j = 0; j < textBoxes.length; j++) {
+          textBoxes[j].style.display = "none";
+        }
+
+        // Show the selected text box
+        var textBoxId = this.getAttribute("id") + "-text";
+        var textBox = document.getElementById(textBoxId);
+        textBox.style.display = "block";
+
+        // Move the opened text box to the top
+        textBox.parentNode.appendChild(textBox);
+
+        // Hide all buttons and circle buttons
+        for (var j = 0; j < buttons.length; j++) {
+          buttons[j].style.display = "none";
+        }
+
+        for (var j = 0; j < circleButtons.length; j++) {
+          circleButtons[j].style.display = "none";
         }
       });
-  
-      for (var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function(e) {
-          var buttonId = e.target.getAttribute("id");
-          var textToShow = buttonId + "-text";
-          toggleTextBox(textToShow);
-        });
-      }
-    });
-  </script>
-</head>
-<body>
-  <div class="container">
-    <h1 class="name">ARUN</h1>
-    <img class="photo" src="demo.png" alt="Profile Photo">
-    <div class="button-container">
-      <button class="button" id="personal-info">PERSONAL INFO</button>
-      <button class="button" id="education">EDUCATION</button>
-    </div>
-    <div class="text-box" id="text-box">
-      <div>
-        <span id="personal-info-text">Personal Data</span>
-        <span id="education-text" style="display:none;">Education Details</span>
-      </div>
-      <button class="close-button" id="close-button">Close</button>
-    </div>
-    <div class="button-container">
-      <button class="button" id="achievements">ACHIEVEMENTS</button>
-      <button class="button" id="skills">SKILLS</button>
-    </div>
-    <div class="circle-container">
-      <a href="https://t.me/your-telegram-link" target="_blank">
-        <button class="circle-button telegram">
-          <i class="fab fa-telegram"></i>
-        </button>
-      </a>
-      <a href="https://instagram.com/_arun_kumar.6?igshid=ZGUzMzM3NWJiOQ==" target="_blank">
-        <button class="circle-button instagram">
-          <i class="fab fa-instagram"></i>
-        </button>
-      </a>
-      <a href="https://www.github.com/your-github-link" target="_blank">
-        <button class="circle-button github">
-          <i class="fab fa-github"></i>
-        </button>
-      </a>
-    </div>
-  </div>
-</body>
-</html>
+    }
+
+    for (var i = 0; i < closeButton.length; i++) {
+      closeButton[i].addEventListener("click", function() {
+        var textBox = this.parentNode;
+        textBox.style.display = "none";
+
+        // Show all buttons and circle buttons
+        for (var j = 0; j < buttons.length; j++) {
+          buttons[j].style.display = "block";
+        }
+
+        for (var j = 0; j < circleButtons.length; j++) {
+          circleButtons[j].style.display = "block";
+        }
+      });
+    }
+  });
+</script> 
+ 
+</body></html>
