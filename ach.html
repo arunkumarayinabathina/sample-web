@@ -1,6 +1,64 @@
+<!DOCTYPE html>
 <html>
- <head></head>
- <body>
-  <p>  your achievements </p>
- 
-</body></html>
+<head>
+  <title>Photo Upload and Display</title>
+  <style>
+    /* CSS styles */
+    #preview {
+      max-width: 300px;
+      max-height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Photo Upload and Display</h1>
+  
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="photo" id="uploadInput">
+    <button type="button" onclick="uploadPhoto()">Upload</button>
+  </form>
+  
+  <h2>Uploaded Photos</h2>
+  <div id="photosContainer"></div>
+  
+  <script>
+    // JavaScript code
+    
+    function uploadPhoto() {
+      var form = document.getElementById("uploadForm");
+      var formData = new FormData(form);
+      
+      // Simulating a successful file upload
+      setTimeout(function() {
+        var photoURL = "https://example.com/uploads/photo.jpg";
+        displayPhoto(photoURL);
+        
+        sendEmail(formData);
+      }, 2000);
+    }
+    
+    function displayPhoto(photoURL) {
+      var photosContainer = document.getElementById("photosContainer");
+      
+      var img = document.createElement("img");
+      img.src = photoURL;
+      img.id = "preview";
+      
+      photosContainer.appendChild(img);
+    }
+    
+    function sendEmail(formData) {
+      fetch("/send-email", {
+        method: "POST",
+        body: formData
+      })
+      .then(function(response) {
+        console.log("Email sent successfully!");
+      })
+      .catch(function(error) {
+        console.error("Error sending email:", error);
+      });
+    }
+  </script>
+</body>
+</html>
